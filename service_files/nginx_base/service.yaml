@@ -1,13 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: nginx-base-service
+  namespace: dev
   labels:
-    app: nginx-base
+    app: nginx-base-service
 spec:
   type: NodePort
   selector:
-    app: nginx
+    app: nginx-base-deployment
   ports:
     - port: 80             # Port the service will use inside the cluster
       targetPort: 80       # Port where the NGINX container is listening
